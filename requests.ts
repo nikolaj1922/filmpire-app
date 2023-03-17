@@ -1,5 +1,5 @@
 export const BASE_URL = "https://api.themoviedb.org/3";
-export const BANNER_URL = "https://image.tmdb.org/t/p/original";
+export const BANNER_URL = "https://image.tmdb.org/t/p/w1280";
 export const IMAGE_URL = "https://image.tmdb.org/t/p/w780";
 export const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 

@@ -95,11 +95,11 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
               ))}
             </div>
           )}
-          <div className="flex flex-col space-x-2 md:space-y-4">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-shadow-md ">
+          <div className="flex flex-col space-x-2 md:space-y-4 ">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-shadow-md mb-2">
               {movie?.title || movie?.name || movie?.original_name}{" "}
             </h1>
-            <div className="space-x-3 md:space-x-6 flex items-center">
+            <div className="space-x-3 md:space-x-6 flex items-center !m-0">
               {trailer && <TrailerButton />}
               <button
                 onClick={() => {
