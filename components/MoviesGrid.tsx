@@ -18,7 +18,6 @@ const MoviesGrid = ({
   isTVShow,
   popular = false,
 }: Props) => {
-  console.log(movies);
   return (
     <div className="space-y-2">
       {genre && !popular && (
@@ -29,7 +28,7 @@ const MoviesGrid = ({
       <div className="grid gap-4 transition-all duration-200 px-2 sm:grid-cols-2 md:gap-6 md:px-4 lg:grid-cols-3  ">
         {movies.map((movie, index) => {
           if (index !== indexCut) {
-            return isTVShow || movie?.media_type === "tv" ? (
+            return isTVShow || movie?.media_type === "tv" || !!movie?.number_of_episodes ? (
               <Thumbnail
                 key={movie.id}
                 movie={movie}
