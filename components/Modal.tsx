@@ -40,7 +40,7 @@ export default function BasicModal({ trailer }: Props) {
             playing
             muted={muted}
           />
-          <div className="absolute left-10 bottom-10">
+          <div className="absolute left-2 bottom-2 md:left-10 md:bottom-10">
             <button onClick={() => setMuted((prevState) => !prevState)}>
               {muted ? (
                 <BsFillVolumeMuteFill className="btn-modal absolute left-3 bottom-3 !z-40 border-none bg-[#181818]/50 p-1" />

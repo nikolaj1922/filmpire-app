@@ -95,7 +95,7 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
               ))}
             </div>
           )}
-          <div className="flex flex-col space-x-2 md:space-y-4 ">
+          <div className="flex flex-col space-y-2 md:space-y-4 ">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-shadow-md mb-2">
               {movie?.title || movie?.name || movie?.original_name}{" "}
             </h1>
