@@ -50,7 +50,7 @@ const CustomPagination = ({
           page={Number(page)}
           size="large"
           variant="text"
-          color="error"
+          color="primary"
           shape="rounded"
           onChange={handleChangePage}
         />
