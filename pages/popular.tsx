@@ -15,7 +15,6 @@ interface Props {
 }
 
 const PopularList = ({ movies }: Props) => {
-  const router = useRouter();
   const { showModal } = useContext(ModalContext);
   const index = getRandomIndex(movies);
 

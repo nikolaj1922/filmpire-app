@@ -10,7 +10,7 @@ import Logo from "../public/FilmpireLogo.png";
 const links = [
   { title: "Movies", href: "/" },
   { title: "TV Shows", href: "/tvshows" },
-  { title: "New & Popular", href: "/movies/trending/1" },
+  { title: "New & Popular", href: "/popular" },
   { title: "My List", href: "/userlist" },
 ];
 
