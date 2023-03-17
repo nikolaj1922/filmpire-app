@@ -148,7 +148,7 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
             <Link
               href={
                 isTVShow || movie?.media_type === "tv"
-                  ? `/tvshows/${movie?.id}`
+                  ? `/tvshow/${movie?.id}`
                   : `/movie/${movie?.id}`
               }
               className="btn-secondary"
