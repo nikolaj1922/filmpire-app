@@ -133,7 +133,7 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
         </div>
       ) : (
         <div className="sm:max-w-lg md:max-w-2xl lg:max-w-4xl justify-end md:p-4 lg:p-6 space-y-4 m-4 md:m-5">
-          <div className="inline-block">
+          <div className="inline-block space-y-1 md:space-y-2">
             <h1 className="text-2xl font-bold md:text-4xl lg:text-5xl">
               {movie?.title || movie?.name || movie?.original_name}
             </h1>

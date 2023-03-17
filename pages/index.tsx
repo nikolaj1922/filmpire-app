@@ -7,6 +7,7 @@ import { IMovie } from "../types";
 import { useContext } from "react";
 import { getRandomIndex } from "../utils/helpers";
 import { ModalContext } from "../context/modal";
+import CustomPagination from "../components/Pagination";
 
 interface Props {
   trending: IMovie[];

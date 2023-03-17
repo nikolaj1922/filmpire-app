@@ -6,9 +6,10 @@ import axios, { AxiosError } from "axios";
 import { IMovie } from "../../../types";
 import Banner from "../../../components/Banner";
 import MoviesGrid from "../../../components/MoviesGrid";
-import CustomPagination from "../../../components/Pagination";
+import Pagination from "../../../components/Pagination";
 import { useRouter } from "next/router";
 import { ModalContext } from "../../../context/modal";
+import Head from "next/head";
 
 interface Props {
   searchData: IMovie[];
@@ -19,9 +20,13 @@ const Search = ({ searchData, pageCount }: Props) => {
   const router = useRouter();
   const { query } = router.query;
   const { showModal } = useContext(ModalContext);
+  console.log(searchData);
 
   return (
     <main className={`${showModal && "overflow-hidden !h-screen"}`}>
+      <Head>
+        <title>Filmpire - Search</title>
+      </Head>
       <div>
         {searchData.length ? (
           <>
@@ -29,15 +34,19 @@ const Search = ({ searchData, pageCount }: Props) => {
               <Banner movie={searchData[0]} />
             </div>
             <section className="p-4 md:p-6 lg:p-8">
-              <MoviesGrid movies={searchData.slice(0, 19)} indexCut={0} />
+              <MoviesGrid
+                movies={searchData.slice(0, 19)}
+                indexCut={0}
+                isTVShow={false}
+              />
             </section>
 
             {pageCount > 1 && (
               <section className="flex justify-center">
-                <CustomPagination
+                <Pagination
                   route={query}
                   isSearch={true}
-                  pageCount={pageCount}
+                  totalPageCount={pageCount > 6 ? 6 : pageCount}
                 />
               </section>
             )}

@@ -7,7 +7,7 @@ import { GetServerSideProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import axios, { AxiosError } from "axios";
 import MoviesGrid from "../../../components/MoviesGrid";
-import CustomPagination from "../../../components/Pagination";
+import Pagination from "../../../components/Pagination";
 import Head from "next/head";
 import { getRandomIndex, genreCapitalize } from "../../../utils/helpers";
 import { ModalContext } from "../../../context/modal";
@@ -32,10 +32,15 @@ const GerneList = ({ movies }: Props) => {
         <Banner movie={movies[index]} />
       </div>
       <section className="p-4 md:p-6 lg:p-8">
-        <MoviesGrid movies={movies} indexCut={index} genre={genreTitle} />
+        <MoviesGrid
+          movies={movies.slice(0, 16)}
+          indexCut={index}
+          genre={genreTitle}
+          isTVShow={false}
+        />
       </section>
       <section className="flex justify-center">
-        <CustomPagination route={genre} />
+        <Pagination route={genre} totalPageCount={6} />
       </section>
     </main>
   );

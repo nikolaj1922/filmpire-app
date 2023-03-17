@@ -22,7 +22,7 @@ const Home = ({ trending, topRated }: Props) => {
       className={`md:mb-6 h-screen ${showModal && "overflow-hidden !h-screen"}`}
     >
       <Head>
-        <title>Filmpire</title>
+        <title>Filmpire - TV Shows</title>
         <meta name="description" content="Best movie search app" />
       </Head>
       <div className="banner-container">

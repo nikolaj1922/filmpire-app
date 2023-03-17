@@ -19,10 +19,10 @@ interface Props {
 const Actor = ({ actorData, moviesWithActor }: Props) => {
   return (
     <div className="space-y-16 bg-mobile-moviepage-gradient-to-b sm:bg-moviepage-gradient-to-b">
+      <Head>
+        <title>Filmpire - {actorData.name}</title>
+      </Head>
       <div className="relative flex space-y-4 space-x-4 flex-col p-4 top-20  sm:p-8 sm:top-16 md:flex-row md:p-16 md:space-x-6 md:top-12 lg:top-16 lg:px-24 lg:space-x-8 lg:pr-32">
-        <Head>
-          <title>Filmpire - {actorData.name}</title>
-        </Head>
         <div className="relative h-[280px] w-[100%] sm:h-[350px] md:basis-1/3 md:h-[480px] justify-self-end">
           <Image
             src={`${IMAGE_URL}/${actorData.profile_path}`}

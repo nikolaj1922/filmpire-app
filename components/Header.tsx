@@ -73,7 +73,7 @@ const Header = () => {
               <Link className="header-link" href="/tvshows">
                 TV Shows
               </Link>
-              <Link className="header-link" href="/movies/trending/1">
+              <Link className="header-link" href="/popular">
                 New & Popular
               </Link>
               <Link className="header-link" href="/userlist">

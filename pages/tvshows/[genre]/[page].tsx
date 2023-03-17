@@ -7,7 +7,7 @@ import { GetServerSideProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import axios, { AxiosError } from "axios";
 import MoviesGrid from "../../../components/MoviesGrid";
-import CustomPagination from "../../../components/Pagination";
+import Pagination from "../../../components/Pagination";
 import Head from "next/head";
 import { getRandomIndex, genreCapitalize } from "../../../utils/helpers";
 import { ModalContext } from "../../../context/modal";
@@ -19,7 +19,7 @@ interface Props {
 const GerneList = ({ movies }: Props) => {
   const router = useRouter();
   const { genre } = router.query;
-  const { showModal  } = useContext(ModalContext);
+  const { showModal } = useContext(ModalContext);
   const genreTitle = genreCapitalize(genre as string);
   const index = getRandomIndex(movies);
 
@@ -32,10 +32,15 @@ const GerneList = ({ movies }: Props) => {
         <Banner movie={movies[index]} />
       </div>
       <section className="p-4 md:p-6 lg:p-8">
-        <MoviesGrid movies={movies} indexCut={index} genre={genreTitle} />
+        <MoviesGrid
+          movies={movies.slice(0, 16)}
+          indexCut={index}
+          genre={genreTitle}
+          isTVShow={true}
+        />
       </section>
       <section className="flex justify-center">
-        <CustomPagination route={genre} />
+        <Pagination route={genre} isTVShow={true} totalPageCount={6} />
       </section>
     </main>
   );
@@ -52,9 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const { genre, page } = context.params as ParsedUrlQuery;
     const url = getSortListUrl(genre as Genre);
 
-    const response = await axios(
-      `${url as string}&page=${page || 1}`
-    );
+    const response = await axios(`${url as string}&page=${page || 1}`);
 
     return {
       props: {
