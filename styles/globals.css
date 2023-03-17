@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-filmpire-black text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-700;
+  }
+
+  header {
+    @apply fixed z-50 w-full flex items-center px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-8 justify-between transition-all duration-200;
+  }
+
+  #__next {
+    @apply relative min-h-screen;
+  }
+}
+
+@layer components {
+  .header-link {
+    @apply text-base lg:text-xl md:text-lg text-filmpire-link transition-all duration-300 hover:text-filmpire-linkhover;
+  }
+
+  .input {
+    @apply w-full rounded bg-[#333] placeholder-[gray] outline-none focus:bg-[#454545] transition-all duration-200 px-5 py-3.5;
+  }
+
+  .page-section-subheader {
+    @apply font-light text-xl md:text-xl lg:text-2xl;
+  }
+
+  .page-section {
+    @apply space-y-2 md:space-y-4 lg:space-y-6;
+  }
+
+  .page-span {
+    @apply text-xl md:text-3xl font-light;
+  }
+
+  .banner-container {
+    @apply bg-mobile-gradient-to-b sm:bg-gradient-to-b relative h-[50vh] sm:h-[60vh] md:h-[65vh] lg:h-[80vh];
+  }
+
+  .btn-trailer {
+    @apply flex items-center font-semibold  py-1 px-2 gap-2 bg-filmpire-link text-black rounded transition-all duration-200  hover:bg-filmpire-linkhover md:text-xl lg:gap-3 lg:text-2xl lg:py-2 lg:px-4;
+  }
+
+  .btn-secondary {
+    @apply flex items-center font-semibold py-1 px-2 gap-2  transition-all duration-200 rounded bg-gray-700/50 md:text-xl lg:gap-3 lg:text-2xl lg:py-2 lg:px-4 hover:bg-gray-500/50;
+  }
+
+  .btn-modal {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border-2 border-[gray] bg-[#2a2a2a]/60 transition hover:border-white hover:bg-white/10;
+  }
+
+  .menu .MuiPaper-root {
+    @apply !absolute !top-16 lg:!left-48 lg:!top-20 !rounded-none !border !border-[gray] !bg-black !text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-700;
+  }
+
+  .menu .MuiList-root {
+    @apply !p-0;
+  }
+
+  .menu .MuiMenuItem-root {
+    @apply !block !w-64 !py-3.5 !text-center md:!text-base lg:!text-lg !font-light !text-[#b3b3b3] !transition !duration-200  hover:!bg-[#11100F];
+  }
+}
