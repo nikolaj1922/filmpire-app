@@ -20,7 +20,7 @@ const Thumbnail = ({ movie, isGenrePage, isTVShow = false }: Props) => {
   }`;
 
   return (
-    <Link href={isTVShow ? `/tvshows/${movie.id}` : `/movie/${movie.id}`}>
+    <Link href={isTVShow ? `/tvshow/${movie.id}` : `/movie/${movie.id}`}>
       <div
         className={`relative cursor-pointer transition duration-200 ${
           isGenrePage
