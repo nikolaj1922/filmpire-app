@@ -35,16 +35,7 @@ const Home = ({
   horror,
   romance,
 }: Props) => {
-  const [bannerMovie, setBannerMovie] = useState<IMovie | null>(null);
-  const [randomIndex, setRandomIndex] = useState<number>(0);
   const { showModal } = useContext(ModalContext);
-
-  useEffect(() => {
-    const index = getRandomIndex(trending);
-    setRandomIndex(index);
-    setBannerMovie(trending[index]);
-  }, []);
-
   return (
     <main
       className={`md:mb-6 relative h-screen ${
@@ -56,7 +47,7 @@ const Home = ({
         <meta name="description" content="Best movie search app" />
       </Head>
       <div className="banner-container">
-        <Banner movie={bannerMovie} />
+        <Banner movie={trending[getRandomIndex(trending)]} />
       </div>
       <section className="!m-0 space-y-2 md:space-y-16 lg:space-y-18">
         <Row movies={topRated} title="Top Rated" />

@@ -6,7 +6,7 @@ import { Element } from "../types";
 import { BANNER_URL, API_KEY } from "../requests";
 import Image from "next/image";
 import { FaInfoCircle, FaPlusCircle, FaMinusCircle } from "react-icons/fa";
-import { collection, DocumentData, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import useAuth from "../hooks/useAuth";
 import Modal from "../components/Modal";
 import { ModalContext } from "../context/modal";
@@ -28,7 +28,7 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
   const { showModal, setShowModal } = useContext(ModalContext);
   const [addedToList, setAddedToList] = useState(false);
   const [movieList, setMovieList] = useState<IMovie[]>([]);
-  console.log(movieList);
+  console.log(movie);
 
   useEffect(() => {
     if (!user?.uid) return;

@@ -15,6 +15,7 @@ const toastStyle = {
   maxWidth: "1000px",
 };
 
+
 export const getRandomIndex = (movies: IMovie[]): number =>
   Math.floor(Math.random() * (Math.floor(movies.length - 1) - 0 + 1) + 0);
 
