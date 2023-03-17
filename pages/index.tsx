@@ -4,10 +4,9 @@ import Banner from "../components/Banner";
 import Row from "../components/Row";
 import { requests } from "../requests";
 import { IMovie } from "../types";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { getRandomIndex } from "../utils/helpers";
 import { ModalContext } from "../context/modal";
-import { genres } from "../utils/helpers";
 
 interface Props {
   trending: IMovie[];

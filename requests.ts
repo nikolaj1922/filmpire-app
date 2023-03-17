@@ -1,5 +1,5 @@
 export const BASE_URL = "https://api.themoviedb.org/3";
-export const BANNER_URL = "https://image.tmdb.org/t/p/w1280";
+export const BANNER_URL = "https://image.tmdb.org/t/p/original";
 export const IMAGE_URL = "https://image.tmdb.org/t/p/w780";
 export const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
@@ -25,6 +25,6 @@ export const requests = {
   fetchThrillerMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=53`,
   fetchWarMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=10752`,
   fetchWesternMovies: `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=37`,
-  fetchTrendingTVShows: `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`,
-  fetchTopRatedTVShows: `${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`,
+  fetchTrendingTVShows: `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US`,
+  fetchTopRatedTVShows: `${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US`,
 };

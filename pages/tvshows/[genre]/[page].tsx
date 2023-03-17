@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { IMovie, Genre } from "../../../types";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import Banner from "../../../components/Banner";
 import { requests } from "../../../requests";
 import { GetServerSideProps } from "next";
@@ -19,8 +19,8 @@ interface Props {
 const GerneList = ({ movies }: Props) => {
   const router = useRouter();
   const { genre } = router.query;
+  const { showModal  } = useContext(ModalContext);
   const genreTitle = genreCapitalize(genre as string);
-  const { showModal } = useContext(ModalContext);
   const index = getRandomIndex(movies);
 
   return (
@@ -43,27 +43,8 @@ const GerneList = ({ movies }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const getSortListUrl = (value: Genre): string => {
-    if (value === "action") return requests.fetchActionMovies;
-    if (value === "adventure") return requests.fetchAdventureMovies;
-    if (value === "animation") return requests.fetchAnimationMovies;
-    if (value === "comedy") return requests.fetchComedyMovies;
-    if (value === "crime") return requests.fetchCrimeMovies;
-    if (value === "documentary") return requests.fetchDocumentaryMovies;
-    if (value === "drama") return requests.fetchDramaMovies;
-    if (value === "family") return requests.fetchFamilyMovies;
-    if (value === "fantasy") return requests.fetchFantasyMovies;
-    if (value === "history") return requests.fetchHistoryMovies;
-    if (value === "horror") return requests.fetchHorrorMovies;
-    if (value === "music") return requests.fetchMusicMovies;
-    if (value === "mystery") return requests.fetchMysteryMovies;
-    if (value === "romance") return requests.fetchRomanceMovies;
-    if (value === "science fiction") return requests.fetchScienceMovies;
-    if (value === "tv movie") return requests.fetchTVMovieMovies;
-    if (value === "thriller") return requests.fetchThrillerMovies;
-    if (value === "war") return requests.fetchWarMovies;
-    if (value === "western") return requests.fetchWesternMovies;
-    if (value === "top rated") return requests.fetchTopRated;
-    if (value === "trending") return requests.fetchTrendingMovies;
+    if (value === "top rated") return requests.fetchTopRatedTVShows;
+    if (value === "trending") return requests.fetchTrendingTVShows;
     return "";
   };
 
@@ -71,7 +52,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const { genre, page } = context.params as ParsedUrlQuery;
     const url = getSortListUrl(genre as Genre);
 
-    const response = await axios(`${url as string}&page=${page || 1}`);
+    const response = await axios(
+      `${url as string}&page=${page || 1}`
+    );
 
     return {
       props: {

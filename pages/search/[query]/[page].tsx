@@ -58,11 +58,11 @@ const Search = ({ searchData, pageCount }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
-    const { query, queryPageCount } = context.params as ParsedUrlQuery;
+    const { query, page } = context.params as ParsedUrlQuery;
 
     const searchDataRes = await axios(
       `${BASE_URL}/search/movie?query=${query}&page=${
-        queryPageCount || 1
+        page || 1
       }&api_key=${API_KEY}`
     );
 

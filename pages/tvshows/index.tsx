@@ -4,7 +4,7 @@ import Banner from "../../components/Banner";
 import Row from "../../components/Row";
 import { requests } from "../../requests";
 import { IMovie } from "../../types";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { getRandomIndex } from "../../utils/helpers";
 import { ModalContext } from "../../context/modal";
 
@@ -14,12 +14,8 @@ interface Props {
 }
 
 const Home = ({ trending, topRated }: Props) => {
-  const [bannerMovie, setBannerMovie] = useState<IMovie | null>(null);
   const { showModal } = useContext(ModalContext);
-
-  useEffect(() => {
-    setBannerMovie(trending[getRandomIndex(trending)]);
-  }, []);
+  const index = getRandomIndex(trending);
 
   return (
     <main
@@ -30,10 +26,10 @@ const Home = ({ trending, topRated }: Props) => {
         <meta name="description" content="Best movie search app" />
       </Head>
       <div className="banner-container">
-        <Banner movie={bannerMovie} isTVShow={true} />
+        <Banner movie={trending[index]} isTVShow={true} />
       </div>
       <section className="!m-0 space-y-2 md:space-y-16 lg:space-y-18">
-        <Row title="Trending Now" movies={trending} isTVShow={true} />
+        <Row title="Trending" movies={trending} indexCut={index} isTVShow={true} />
         <Row title="Top Rated" movies={topRated} isTVShow={true} />
       </section>
     </main>

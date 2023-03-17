@@ -35,11 +35,6 @@ const Thumbnail = ({ movie, isGenrePage, isTVShow = false }: Props) => {
           fill
           sizes="100wh"
         />
-        {/* <div className="h-full w-full z-10 relative group">
-          <h1 className="hidden group-hover:inline-block absolute bottom-5 left-5 text-2xl font-bold text-filmpire-link transition-all duration-300">
-            {movie?.title || movie?.name || movie?.original_name}
-          </h1>
-        </div> */}
       </div>
     </Link>
   );

@@ -32,7 +32,7 @@ const Row = ({ movies, title, indexCut, isTVShow = false }: Props) => {
     <div className="h-40 pl-4 md:pl-6 lg-px-8 transition-all">
       {title && (
         <div className="pl-2 md:pl-6">
-          <GenreLink title={title} />
+          <GenreLink title={title} isTVShow={isTVShow} />
         </div>
       )}
       <div className="group relative">
