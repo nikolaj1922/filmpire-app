@@ -40,6 +40,7 @@ const Pagination = ({
                 i === Number(page) && "!bg-red-500"
               }`}
               onClick={() => handleChangePage(i)}
+              key={i}
             >
               {i}
             </button>

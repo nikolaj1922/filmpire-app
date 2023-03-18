@@ -44,10 +44,8 @@ export default function BasicMenu() {
         }}
       >
         {genres.map((genre) => (
-          <Link href={`/movies/${genre.toLowerCase()}/1`}>
-            <MenuItem onClick={handleClose} key={genre}>
-              {genre}
-            </MenuItem>
+          <Link href={`/movies/${genre.toLowerCase()}/1`} key={genre}>
+            <MenuItem onClick={handleClose}>{genre}</MenuItem>
           </Link>
         ))}
       </Menu>

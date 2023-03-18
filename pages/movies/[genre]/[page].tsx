@@ -33,7 +33,7 @@ const GerneList = ({ movies }: Props) => {
       </div>
       <section className="p-4 md:p-6 lg:p-8">
         <MoviesGrid
-          movies={movies.slice(0, 16)}
+          movies={movies.slice(0, 19)}
           indexCut={index}
           genre={genreTitle}
           isTVShow={false}

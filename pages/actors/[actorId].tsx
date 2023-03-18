@@ -40,7 +40,9 @@ const Actor = ({ actorData, moviesWithActor }: Props) => {
             {getFormattedData(new Date(actorData.birthday))}
           </PageSection>
           {actorData.deathday && (
-            <PageSection subheader="Death">{actorData.deathday}</PageSection>
+            <PageSection subheader="Death">
+              {getFormattedData(new Date(actorData.deathday))}
+            </PageSection>
           )}
           <PageSection subheader="Birth place">
             {actorData.place_of_birth}

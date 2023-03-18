@@ -15,7 +15,6 @@ const toastStyle = {
   maxWidth: "1000px",
 };
 
-
 export const getRandomIndex = (movies: IMovie[]): number =>
   Math.floor(Math.random() * (Math.floor(movies.length - 1) - 0 + 1) + 0);
 
@@ -63,10 +62,6 @@ export const handleList = async (
   const docRef = doc(db, "users", user.uid);
   try {
     if (addedToList) {
-      await updateDoc(docRef, {
-        userList: arrayRemove(movie),
-      });
-
       toast(
         `${
           movie?.title || movie?.name || movie?.original_name
@@ -76,11 +71,10 @@ export const handleList = async (
           style: toastStyle,
         }
       );
-    } else {
       await updateDoc(docRef, {
-        userList: arrayUnion(movie),
+        userList: arrayRemove(movie),
       });
-
+    } else {
       toast(
         `${
           movie?.title || movie?.name || movie?.original_name
@@ -90,6 +84,9 @@ export const handleList = async (
           style: toastStyle,
         }
       );
+      await updateDoc(docRef, {
+        userList: arrayUnion(movie),
+      });
     }
   } catch (err: any) {
     console.log(err);

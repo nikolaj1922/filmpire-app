@@ -28,7 +28,6 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
   const { showModal, setShowModal } = useContext(ModalContext);
   const [addedToList, setAddedToList] = useState(false);
   const [movieList, setMovieList] = useState<IMovie[]>([]);
-  console.log(movie);
 
   useEffect(() => {
     if (!user?.uid) return;
