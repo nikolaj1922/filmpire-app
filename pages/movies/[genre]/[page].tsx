@@ -85,7 +85,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   } catch (err) {
     const error = err as AxiosError;
-    console.log(error.response);
     return {
       notFound: true,
     };

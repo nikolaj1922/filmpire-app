@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import BgImage from "../public/hero.jpg";
@@ -155,5 +155,9 @@ function Login() {
     </div>
   );
 }
+
+Login.getLayout = function getLayout(page: ReactElement) {
+  return <>{page}</>;
+};
 
 export default Login;

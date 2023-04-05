@@ -7,7 +7,6 @@ import { IMovie } from "../types";
 import { useContext } from "react";
 import { getRandomIndex } from "../utils/helpers";
 import { ModalContext } from "../context/modal";
-import CustomPagination from "../components/Pagination";
 
 interface Props {
   trending: IMovie[];
@@ -117,7 +116,6 @@ export const getServerSideProps = async () => {
     };
   } catch (err) {
     const error = err as AxiosError;
-    console.log(error.response);
   }
 };
 

@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
-import { GetServerSideProps } from "next";
-import { ParsedUrlQuery } from "querystring";
+import React, { useContext, useState } from "react";
 import axios, { AxiosError } from "axios";
-import { API_KEY } from "../../requests";
-import { IMovie, IPerson } from "../../types";
 import Head from "next/head";
 import PageSection from "../../components/PageSection";
 import Image from "next/image";
-import { IMAGE_URL, BASE_URL } from "../../requests";
 import MoviesGrid from "../../components/MoviesGrid";
+import { GetServerSideProps } from "next";
+import { ParsedUrlQuery } from "querystring";
+import { API_KEY } from "../../requests";
+import { IMovie, IPerson } from "../../types";
+import { IMAGE_URL, BASE_URL } from "../../requests";
 import { getFormattedData } from "../../utils/helpers";
+import { CircularProgress } from "@mui/material";
 
 interface Props {
   actorData: IPerson;
@@ -17,20 +18,24 @@ interface Props {
 }
 
 const Actor = ({ actorData, moviesWithActor }: Props) => {
+  const [isPosterLoaded, setIsPosterLoaded] = useState(false);
+
   return (
     <div className="space-y-16 bg-mobile-moviepage-gradient-to-b sm:bg-moviepage-gradient-to-b">
       <Head>
         <title>Filmpire - {actorData.name}</title>
       </Head>
       <div className="relative flex space-y-4 space-x-4 flex-col p-4 top-20  sm:p-8 sm:top-16 md:flex-row md:p-16 md:space-x-6 md:top-12 lg:top-16 lg:px-24 lg:space-x-8 lg:pr-32">
-        <div className="relative h-[280px] w-[100%] sm:h-[350px] md:basis-1/3 md:h-[480px] justify-self-end">
+        <div className="relative h-[280px] w-[100%] sm:h-[350px] md:basis-1/3 md:h-[480px] justify-self-end flex justify-center items-center">
           <Image
             src={`${IMAGE_URL}/${actorData.profile_path}`}
             alt={`${actorData.name}`}
             fill
             sizes="100wh"
             className="rounded-sm object-contain md:object-right-top"
+            onLoadingComplete={() => setIsPosterLoaded(true)}
           />
+          {!isPosterLoaded && <CircularProgress color="primary" size={30} />}
         </div>
         <div className="flex flex-col space-y-8 sm:basis-2/3">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold !p-0">
@@ -86,7 +91,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   } catch (err) {
     const error = err as AxiosError;
-    console.log(error.response);
     return {
       notFound: true,
     };

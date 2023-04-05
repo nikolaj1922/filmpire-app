@@ -14,6 +14,8 @@ import TrailerButton from "./TrailerButton";
 import { handleList } from "../utils/helpers";
 import { db } from "../firebase";
 import { Toaster } from "react-hot-toast";
+import { CircularProgress } from "@mui/material";
+import { grey } from "@mui/material/colors";
 
 interface Props {
   movie: IMovie | null;
@@ -28,6 +30,7 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
   const { showModal, setShowModal } = useContext(ModalContext);
   const [addedToList, setAddedToList] = useState(false);
   const [movieList, setMovieList] = useState<IMovie[]>([]);
+  const [isPosterLoaded, setIsPosterLoaded] = useState(false);
 
   useEffect(() => {
     if (!user?.uid) return;
@@ -75,6 +78,9 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
   return (
     <div className={`flex flex-col justify-end h-full px-2`}>
       <Toaster position="bottom-center" />
+      {!isPosterLoaded && (
+        <CircularProgress color="primary" className="mx-auto" size={45} />
+      )}
       <div className="absolute top-0 left-0 h-full -z-10 w-screen">
         <Image
           src={`${BANNER_URL}/${movie?.backdrop_path || movie?.poster_path}`}
@@ -82,7 +88,11 @@ const Banner = ({ movie, isMoviePage = false, isTVShow = false }: Props) => {
           fill
           sizes="100wh"
           style={{ objectFit: "cover" }}
-          className="object-top"
+          className={`object-top ${
+            isPosterLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          priority
+          onLoadingComplete={() => setIsPosterLoaded(true)}
         />
       </div>
       {isMoviePage ? (

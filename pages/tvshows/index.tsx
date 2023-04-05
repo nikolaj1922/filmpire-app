@@ -57,7 +57,6 @@ export const getServerSideProps = async () => {
     };
   } catch (err) {
     const error = err as AxiosError;
-    console.log(error.response);
   }
 };
 

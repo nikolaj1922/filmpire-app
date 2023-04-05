@@ -20,7 +20,6 @@ const Search = ({ searchData, pageCount }: Props) => {
   const router = useRouter();
   const { query } = router.query;
   const { showModal } = useContext(ModalContext);
-  console.log(searchData);
 
   return (
     <main className={`${showModal && "overflow-hidden !h-screen"}`}>
@@ -83,7 +82,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   } catch (err) {
     const error = err as AxiosError;
-    console.log(error.response);
     return {
       notFound: true,
     };
