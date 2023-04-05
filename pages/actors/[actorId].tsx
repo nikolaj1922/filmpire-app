@@ -32,7 +32,9 @@ const Actor = ({ actorData, moviesWithActor }: Props) => {
             alt={`${actorData.name}`}
             fill
             sizes="100wh"
-            className="rounded-sm object-contain md:object-right-top"
+            className={`rounded-sm object-contain md:object-right-top ${
+              isPosterLoaded ? "opacity-100" : "opacity-0"
+            }`}
             onLoadingComplete={() => setIsPosterLoaded(true)}
           />
           {!isPosterLoaded && <CircularProgress color="primary" size={30} />}
